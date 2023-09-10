@@ -266,7 +266,7 @@ pub struct RelationValue {
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum RollupValue {
     Number { number: Option<Number> },
-    Date { date: Option<DateTime<Utc>> },
+    Date { date: Option<DateValue> },
     Array { array: Vec<RollupPropertyValue> },
 }
 
@@ -378,6 +378,9 @@ pub enum PropertyValue {
 #[serde(tag = "type")]
 #[serde(rename_all = "snake_case")]
 pub enum RollupPropertyValue {
+    Title {
+        title: Vec<RichText>,
+    },
     /// <https://developers.notion.com/reference/page#rich-text-property-values>
     #[serde(rename = "rich_text")]
     Text {
